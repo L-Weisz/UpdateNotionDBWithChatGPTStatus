@@ -40,3 +40,8 @@ $ npm install
 - Rename `.env.example` in `.env`
 - Add secrets shared in Dashlane
 
+## Start the project 
+```bash
+
+$ npm start
+```
