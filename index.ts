@@ -13,10 +13,11 @@ async function updateNotionDatabase() {
     const pages = await getPagesFromNotionDataBase()
 
     for (let page of pages) {
-        const pageDate = new Date(page.properties.Date.date.start);
-        if (pageDate < oneWeekAgo) continue;
+        const isOlderThanAWeek = new Date(page.properties.Date.date.start) < oneWeekAgo
+        if (isOlderThanAWeek) continue;
 
-        if (page.properties.Tries.number === 1) {
+        const isRTFT = page.properties.Tries.number === 1
+        if (isRTFT) {
             await updateNotionPageStatus(page.id, "rtft");
             continue;
         }
