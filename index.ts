@@ -1,21 +1,14 @@
 import { extractTextFromBlocks } from "./utils/extractTextFromBlocks";
 import { getNotionPageBlocks } from "./utils/getNotionPageContent";
-import { getPagesFromNotionDataBase } from "./utils/getPagesFromNotionDataBase";
+import { getRecentPagesFromNotionDatabase } from "./utils/getRecentPagesFromNotionDatabase";
 import { getStatusWithChatGPT } from "./utils/getStatusWithChatGPT";
 import { isStatusValid } from "./utils/isStatusValid";
 import { updateNotionPageStatus } from "./utils/updateNotionPageStatus";
 
-
-const oneWeekAgo = new Date();
-oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
 async function updateNotionDatabase() {
-    const pages = await getPagesFromNotionDataBase()
+    const pages = await getRecentPagesFromNotionDatabase()
 
     for (let page of pages) {
-        const isOlderThanAWeek = new Date(page.properties.Date.date.start) < oneWeekAgo
-        if (isOlderThanAWeek) continue;
-
         const isRTFT = page.properties.Tries.number === 1
         if (isRTFT) {
             await updateNotionPageStatus(page.id, "rtft");
