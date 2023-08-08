@@ -8,6 +8,10 @@ Using the page content is then computes a status using Open AI API.
 
 It then updates the status in the Notion DB using Notion API. 
 
+# Demo
+
+https://github.com/L-Weisz/UpdateNotionDBWithChatGPTStatus/assets/117728108/823112ce-4254-4fa4-896a-4dd04a4e4d4f
+
 ## Features
 
 - **Notion Integration**: Direct interaction with the Notion API to fetch block details.
@@ -29,7 +33,6 @@ It then updates the status in the Notion DB using Notion API.
 $ git clone <repository-url>
 ```
 
-
 2. Install the required dependencies:
 ```bash
 
@@ -39,6 +42,7 @@ $ npm install
 3. Add secrets to env variables:
 - Rename `.env.example` in `.env`
 - Add secrets shared in Dashlane
+  
 
 ## Start the project 
 ```bash
