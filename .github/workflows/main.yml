@@ -2,7 +2,8 @@ name: Daily Run
 
 on:
   schedule:
-    - cron: '0 10 * * *'  # This will run every day at 10:00 UTC
+    - cron: '0 10 * * *'
+  workflow_dispatch: 
 
 jobs:
   run_app:
@@ -15,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Adjust this if you need a specific Node.js version
+        node-version: '14'
 
     - name: Install dependencies
       run: npm install
