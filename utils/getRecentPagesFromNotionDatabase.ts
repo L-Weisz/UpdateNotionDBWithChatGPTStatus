@@ -19,7 +19,7 @@ export async function getRecentPagesFromNotionDatabase() {
 
     const filterOutOlderThanAWeek = {
         filter: {
-            property: "Date",
+            property: "🟢 Date",
             date: {
                 "after": formattedOneWeekAgo
             }

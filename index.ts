@@ -9,7 +9,14 @@ async function updateNotionDatabase() {
     const pages = await getRecentPagesFromNotionDatabase()
 
     for (let page of pages) {
-        const isRTFT = page.properties.Tries.number === 1
+        const triesProperty = page.properties?.["🟢 User Story : Tries"];
+
+        if (triesProperty === null) {
+            throw new Error(`Property "🟢 User Story : Tries" does not exist on page with ID: ${page.id}`);
+        }
+
+        const isRTFT = triesProperty?.select?.name === '1';
+
         if (isRTFT) {
             await updateNotionPageStatus(page.id, "rtft");
             continue;

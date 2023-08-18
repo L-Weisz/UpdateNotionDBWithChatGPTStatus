@@ -13,7 +13,7 @@ export async function updateNotionPageStatus(pageId: string, status: string) {
     const url = `https://api.notion.com/v1/pages/${pageId}`;
     const updatePayload = {
         properties: {
-            ChatGPTStatut: {
+            ChatGPTStatus: {
                 multi_select: [{ name: status }]
             }
         }
