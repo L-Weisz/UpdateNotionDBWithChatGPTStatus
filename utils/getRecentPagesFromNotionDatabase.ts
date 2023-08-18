@@ -15,6 +15,7 @@ oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 const formattedOneWeekAgo = `${oneWeekAgo.getFullYear()}-${String(oneWeekAgo.getMonth() + 1).padStart(2, '0')}-${String(oneWeekAgo.getDate()).padStart(2, '0')}`;
 
 export async function getRecentPagesFromNotionDatabase() {
+    console.log("Fetching recent pages from database...")
     const databaseId = process.env.DATABASE_ID;
 
     const filterOutOlderThanAWeek = {
@@ -29,6 +30,7 @@ export async function getRecentPagesFromNotionDatabase() {
     try {
         const url = `https://api.notion.com/v1/databases/${databaseId}/query`;
         const response = await axios.post(url, filterOutOlderThanAWeek, { headers });
+        console.log("Database fetched successfully..")
         return response.data.results;
     } catch (error: any) {
         const axiosError = error as AxiosError;
